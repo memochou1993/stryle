@@ -9,7 +9,7 @@ A collection of utility functions for transforming string case.
 Import the module and use it in your code:
 
 ```js
-import { toTitleCase } from '@kklab/stryle';
+import { toTitleCase } from '@memochou1993/stryle';
 
 const output = toTitleCase('hello, world!');
 console.log(output);
@@ -22,7 +22,7 @@ console.log(output);
 Include the UMD script in your HTML file and use it:
 
 ```html
-<script src="https://unpkg.com/@kklab/stryle/dist/index.umd.js"></script>
+<script src="https://unpkg.com/@memochou1993/stryle/dist/index.umd.js"></script>
 <script>
 const output = window.Stryle.toTitleCase('hello, world!');
 console.log(output);
