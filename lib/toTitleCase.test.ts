@@ -8,11 +8,11 @@ describe('toTitleCase', () => {
       ['hello, world!', 'Hello, World!'],
       ['snake_case', 'Snake Case'],
       ['camelCase', 'Camel Case'],
-      ['CamelCase', 'Camel Case'],
+      ['PascalCase', 'Pascal Case'],
+      ['kebab-case', 'Kebab Case'],
       ['HTMLElement', 'HTML Element'],
       ['This is an HTML element', 'This is an HTML Element'],
       ['Is this an HTML element', 'Is This an HTML Element'],
-      ['step-by-step', 'Step-by-Step'],
     ];
 
     cases.forEach(([input, expected]) => {

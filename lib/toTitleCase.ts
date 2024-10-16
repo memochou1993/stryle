@@ -33,7 +33,7 @@ class Converter {
 
   private transform(): this {
     this.str = this.str
-      .replace(/[_]/g, ' ')
+      .replace(/[_-]/g, ' ')
       .replace(/([a-z])([A-Z])/g, '$1 $2')
       .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
       .split(' ')
@@ -56,11 +56,11 @@ class Converter {
 
   private processWord(word: string, isFirstWord: boolean): string {
     if (word === word.toUpperCase()) return word;
-    if (word.includes('-')) {
-      return word.split('-')
-        .map((part, i) => this.processWord(part, i === 0))
-        .join('-');
-    }
+    // if (word.includes('-')) {
+    //   return word.split('-')
+    //     .map((part, i) => this.processWord(part, i === 0))
+    //     .join('-');
+    // }
     if (isFirstWord || !EXCEPTIONS.test(word)) {
       return capitalize(word);
     }
