@@ -14,7 +14,7 @@ class Converter {
 
   constructor(str: string, options: ConverterOptions = {}) {
     this.str = str;
-    this.specialWords = options.specialWords ?? [];
+    this.specialWords = options.specialWords?.filter(Boolean) ?? [];
   }
 
   public convert(): string {
@@ -25,7 +25,7 @@ class Converter {
   }
 
   private encodeSpecialWords(): this {
-    if (this.specialWords.length < 1) return this;
+    if (this.specialWords.length === 0) return this;
     const pattern = new RegExp(this.specialWords.join('|'), 'gi');
     this.str = this.str.replace(pattern, match => `${PLACEHOLDER}${match.toUpperCase()}${PLACEHOLDER}`);
     return this;
@@ -43,9 +43,13 @@ class Converter {
   }
 
   private decodeSpecialWords(): this {
-    if (this.specialWords.length < 1) return this;
+    if (this.specialWords.length === 0) return this;
     this.str = this.str.replace(new RegExp(`${PLACEHOLDER}(.+?)${PLACEHOLDER}`, 'g'), (_, match) => {
-      return this.specialWords.find(word => word.toUpperCase() === match.toUpperCase()) || match;
+      return this.specialWords.find((word) => {
+        return word.toUpperCase() === match.toUpperCase()
+          || word.toUpperCase() === match.replace(/\s+/g, '_').toUpperCase()
+          || word.toUpperCase() === match.replace(/\s+/g, '-').toUpperCase();
+      }) || match;
     });
     return this;
   }
@@ -56,11 +60,6 @@ class Converter {
 
   private processWord(word: string, isFirstWord: boolean): string {
     if (word === word.toUpperCase()) return word;
-    // if (word.includes('-')) {
-    //   return word.split('-')
-    //     .map((part, i) => this.processWord(part, i === 0))
-    //     .join('-');
-    // }
     if (isFirstWord || !EXCEPTIONS.test(word)) {
       return capitalize(word);
     }
