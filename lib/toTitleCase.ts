@@ -4,29 +4,29 @@ const EXCEPTIONS = /^(a|an|and|as|at|but|by|for|if|in|is|nor|of|on|or|the|to|wit
 const PLACEHOLDER = '###PLACEHOLDER###';
 
 interface ConverterOptions {
-  specialWords?: string[];
+  fixedTerms?: string[];
 }
 
 class Converter {
   private str: string;
 
-  private specialWords: string[];
+  private fixedTerms: string[];
 
-  constructor(str: string, options: ConverterOptions = {}) {
-    this.str = str;
-    this.specialWords = options.specialWords?.filter(Boolean) ?? [];
+  constructor(str: unknown, options: ConverterOptions = {}) {
+    this.str = String(str);
+    this.fixedTerms = options.fixedTerms?.filter(Boolean) ?? [];
   }
 
   public convert(): string {
-    return this.encodeSpecialWords()
+    return this.encodeFixedTerms()
       .transform()
-      .decodeSpecialWords()
+      .decodeFixedTerms()
       .getResult();
   }
 
-  private encodeSpecialWords(): this {
-    if (this.specialWords.length === 0) return this;
-    const pattern = new RegExp(this.specialWords.join('|'), 'gi');
+  private encodeFixedTerms(): this {
+    if (this.fixedTerms.length === 0) return this;
+    const pattern = new RegExp(this.fixedTerms.join('|'), 'gi');
     this.str = this.str.replace(pattern, match => `${PLACEHOLDER}${match.toUpperCase()}${PLACEHOLDER}`);
     return this;
   }
@@ -42,10 +42,10 @@ class Converter {
     return this;
   }
 
-  private decodeSpecialWords(): this {
-    if (this.specialWords.length === 0) return this;
+  private decodeFixedTerms(): this {
+    if (this.fixedTerms.length === 0) return this;
     this.str = this.str.replace(new RegExp(`${PLACEHOLDER}(.+?)${PLACEHOLDER}`, 'g'), (_, match) => {
-      return this.specialWords.find((word) => {
+      return this.fixedTerms.find((word) => {
         return word.toUpperCase() === match.toUpperCase()
           || word.toUpperCase() === match.replace(/\s+/g, '_').toUpperCase();
       }) || match;

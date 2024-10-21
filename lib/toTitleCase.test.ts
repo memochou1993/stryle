@@ -21,23 +21,28 @@ describe('toTitleCase', () => {
     });
   });
 
-  test('should convert considering special words', () => {
-    const specialWords = ['', 'iPhone', 'iOS', 'Snake_Case'];
+  test('should convert considering fixed terms', () => {
+    const fixedTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$'];
 
     const cases = [
+      ['This is an iPhone', 'This is an iPhone'],
       ['This is an iphone', 'This is an iPhone'],
       ['This is an IPHONE', 'This is an iPhone'],
-      ['This is an iPhone', 'This is an iPhone'],
+      ['This is an iOS app', 'This is an iOS App'],
       ['This is an ios app', 'This is an iOS App'],
       ['This is an IOS app', 'This is an iOS App'],
-      ['This is an iOS app', 'This is an iOS App'],
+      ['This is a Snake_Case', 'This is a Snake_Case'],
       ['This is a snake_case', 'This is a Snake_Case'],
       ['This is a SNAKE_CASE', 'This is a Snake_Case'],
-      ['This is a Snake_Case', 'This is a Snake_Case'],
+      ['Working with LLMs', 'Working with LLMs'],
+      ['Working with llms', 'Working with LLMs'],
+      ['Working with LLMS', 'Working with LLMS'],
+      ['User Id', 'User ID'],
+      ['User Identifier', 'User Identifier'],
     ];
 
     cases.forEach(([input, expected]) => {
-      const actual = toTitleCase(input, { specialWords });
+      const actual = toTitleCase(input, { fixedTerms });
       expect(actual).toBe(expected);
     });
   });

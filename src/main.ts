@@ -1,4 +1,8 @@
 import { toTitleCase } from '../dist';
 import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `<pre>${toTitleCase('hello, world!')}</pre>`;
+const output = toTitleCase('hello, stryle!', {
+  fixedTerms: ['STRYLE'],
+});
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `<pre>${output}</pre>`;

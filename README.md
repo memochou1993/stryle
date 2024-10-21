@@ -11,10 +11,13 @@ Import the module and use it in your code:
 ```js
 import { toTitleCase } from '@memochou1993/stryle';
 
-const output = toTitleCase('hello, world!');
+const output = toTitleCase('hello, stryle!', {
+  fixedTerms: ['STRYLE'],
+});
+
 console.log(output);
 // Output:
-// Hello, World!
+// Hello, STRYLE!
 ```
 
 ### Using with UMD Modules
@@ -24,10 +27,13 @@ Include the UMD script in your HTML file and use it:
 ```html
 <script src="https://unpkg.com/@memochou1993/stryle/dist/index.umd.js"></script>
 <script>
-const output = window.Stryle.toTitleCase('hello, world!');
+const output = window.Stryle.toTitleCase('hello, stryle!', {
+  fixedTerms: ['STRYLE'],
+});
+
 console.log(output);
 // Output:
-// Hello, World!
+// Hello, STRYLE!
 </script>
 ```
 
