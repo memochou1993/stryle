@@ -4,16 +4,20 @@ const EXCEPTIONS = /^(a|an|and|as|at|but|by|for|if|in|is|nor|of|on|or|the|to|wit
 const PLACEHOLDER = '###PLACEHOLDER###';
 
 interface ConverterOptions {
+  separators?: string[];
   fixedTerms?: string[];
 }
 
 class Converter {
   private str: string;
 
+  private separators: string[];
+
   private fixedTerms: string[];
 
   constructor(str: unknown, options: ConverterOptions = {}) {
     this.str = String(str);
+    this.separators = options.separators ?? ['_'];
     this.fixedTerms = options.fixedTerms?.filter(Boolean) ?? [];
   }
 
@@ -33,7 +37,7 @@ class Converter {
 
   private transform(): this {
     this.str = this.str
-      .replace(/[_]/g, ' ')
+      .replace(new RegExp(`[${this.separators.map(s => `\\${s}`).join('')}]`, 'g'), ' ')
       .replace(/([a-z])([A-Z])/g, '$1 $2')
       .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
       .split(' ')

@@ -21,6 +21,20 @@ describe('toTitleCase', () => {
     });
   });
 
+  test('should convert considering custom separators', () => {
+    const separators = ['_', '-', '|'];
+
+    const cases = [
+      ['kebab-case', 'Kebab Case'],
+      ['true|false', 'True False'],
+    ];
+
+    cases.forEach(([input, expected]) => {
+      const actual = toTitleCase(input, { separators });
+      expect(actual).toBe(expected);
+    });
+  });
+
   test('should convert considering fixed terms', () => {
     const fixedTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$'];
 
