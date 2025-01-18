@@ -75,6 +75,9 @@ class Converter {
   }
 }
 
+/**
+ * Convert a string to `Title Case`.
+ */
 const toTitleCase = (str: string, options: ConverterOptions = {}): string => new Converter(str, options).convert();
 
 export default toTitleCase;

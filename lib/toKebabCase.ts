@@ -11,16 +11,16 @@ class Converter {
 
   private getResult(): string {
     return this.str
-      .replace(/([a-z])([A-Z])/g, '$1_$2')
-      .replace(/\s+/g, '_')
-      .replace(/-/g, '_')
+      .replace(/([a-z])([A-Z])/g, '$1-$2')
+      .replace(/\s+/g, '-')
+      .replace(/_/g, '-')
       .toLowerCase();
   }
 }
 
 /**
- * Convert a string to `snake_case`.
+ * Convert a string to `kebab-case`.
  */
-const toSnakeCase = (str: string): string => new Converter(str).convert();
+const toKebabCase = (str: string): string => new Converter(str).convert();
 
-export default toSnakeCase;
+export default toKebabCase;

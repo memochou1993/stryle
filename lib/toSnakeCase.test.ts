@@ -5,6 +5,7 @@ import toSnakeCase from './toSnakeCase';
 describe('toSnakeCase', () => {
   test('should convert correctly', () => {
     const cases = [
+      ['snake_case', 'snake_case'],
       ['Title Case', 'title_case'],
       ['camelCase', 'camel_case'],
       ['PascalCase', 'pascal_case'],
