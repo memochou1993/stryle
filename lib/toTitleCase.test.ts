@@ -36,7 +36,7 @@ describe('toTitleCase', () => {
   });
 
   test('should convert considering fixed terms', () => {
-    const fixedTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$'];
+    const specialTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$'];
 
     const cases = [
       ['This is an iPhone', 'This is an iPhone'],
@@ -56,7 +56,7 @@ describe('toTitleCase', () => {
     ];
 
     cases.forEach(([input, expected]) => {
-      const actual = toTitleCase(input, { fixedTerms });
+      const actual = toTitleCase(input, { specialTerms });
       expect(actual).toBe(expected);
     });
   });

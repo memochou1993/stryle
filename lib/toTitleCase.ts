@@ -5,7 +5,7 @@ const PLACEHOLDER = '###PLACEHOLDER###';
 
 interface ConverterOptions {
   separators?: string[];
-  fixedTerms?: string[];
+  specialTerms?: string[];
 }
 
 class Converter {
@@ -13,24 +13,24 @@ class Converter {
 
   private separators: string[];
 
-  private fixedTerms: string[];
+  private specialTerms: string[];
 
   constructor(str: unknown, options: ConverterOptions = {}) {
     this.str = String(str);
     this.separators = options.separators ?? ['_'];
-    this.fixedTerms = options.fixedTerms?.filter(Boolean) ?? [];
+    this.specialTerms = options.specialTerms?.filter(Boolean) ?? [];
   }
 
   public convert(): string {
-    return this.encodeFixedTerms()
+    return this.encodeSpecialTerms()
       .transform()
-      .decodeFixedTerms()
+      .decodeSpecialTerms()
       .getResult();
   }
 
-  private encodeFixedTerms(): this {
-    if (this.fixedTerms.length === 0) return this;
-    const pattern = new RegExp(this.fixedTerms.join('|'), 'gi');
+  private encodeSpecialTerms(): this {
+    if (this.specialTerms.length === 0) return this;
+    const pattern = new RegExp(this.specialTerms.join('|'), 'gi');
     this.str = this.str.replace(pattern, match => `${PLACEHOLDER}${match.toUpperCase()}${PLACEHOLDER}`);
     return this;
   }
@@ -46,10 +46,10 @@ class Converter {
     return this;
   }
 
-  private decodeFixedTerms(): this {
-    if (this.fixedTerms.length === 0) return this;
+  private decodeSpecialTerms(): this {
+    if (this.specialTerms.length === 0) return this;
     this.str = this.str.replace(new RegExp(`${PLACEHOLDER}(.+?)${PLACEHOLDER}`, 'g'), (_, match) => {
-      return this.fixedTerms.find((word) => {
+      return this.specialTerms.find((word) => {
         return word.toUpperCase() === match.toUpperCase()
           || word.toUpperCase() === match.replace(/\s+/g, '_').toUpperCase();
       }) || match;

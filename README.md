@@ -12,7 +12,7 @@ Import the module and use it in your code:
 import { toTitleCase } from '@memochou1993/stryle';
 
 const output = toTitleCase('hello, stryle!', {
-  fixedTerms: ['STRYLE'],
+  specialTerms: ['STRYLE'],
 });
 
 console.log(output);
@@ -28,7 +28,7 @@ Include the UMD script in your HTML file and use it:
 <script src="https://unpkg.com/@memochou1993/stryle/dist/index.umd.js"></script>
 <script>
 const output = window.Stryle.toTitleCase('hello, stryle!', {
-  fixedTerms: ['STRYLE'],
+  specialTerms: ['STRYLE'],
 });
 
 console.log(output);
