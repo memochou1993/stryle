@@ -5,12 +5,14 @@ import toKebabCase from './toKebabCase';
 describe('toKebabCase', () => {
   test('should convert correctly', () => {
     const cases = [
-      ['Kebab-Case', 'kebab-case'],
-      ['Title Case', 'title-case'],
       ['camelCase', 'camel-case'],
+      ['Kebab-Case', 'kebab-case'],
       ['PascalCase', 'pascal-case'],
       ['snake_case', 'snake-case'],
+      ['Title Case', 'title-case'],
       ['HTML Element', 'html-element'],
+      ['XMLHttpRequest', 'xml-http-request'],
+      ['json2markdown', 'json-2-markdown'],
     ];
 
     cases.forEach(([input, expected]) => {

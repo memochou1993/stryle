@@ -1,4 +1,4 @@
-import capitalize from './capitalize';
+import upperFirst from './upperFirst';
 
 const EXCEPTIONS = /^(a|an|and|as|at|but|by|for|if|in|is|nor|of|on|or|the|to|with)$/i;
 const PLACEHOLDER = '###PLACEHOLDER###';
@@ -69,14 +69,18 @@ class Converter {
         .join('-');
     }
     if (isFirstWord || !EXCEPTIONS.test(word)) {
-      return capitalize(word);
+      return upperFirst(word);
     }
     return word.toLowerCase();
   }
 }
 
 /**
- * Convert a string to `Title Case`.
+ * Converts a given string to `Title Case`.
+ *
+ * @param str - The string to be converted.
+ * @param options - Optional configuration for the conversion process.
+ * @returns The `Title Case` formatted string.
  */
 const toTitleCase = (str: string, options: ConverterOptions = {}): string => new Converter(str, options).convert();
 

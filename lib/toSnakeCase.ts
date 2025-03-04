@@ -1,3 +1,5 @@
+import splitWords from './splitWords';
+
 class Converter {
   private str: string;
 
@@ -10,16 +12,17 @@ class Converter {
   }
 
   private getResult(): string {
-    return this.str
-      .replace(/([a-z])([A-Z])/g, '$1_$2')
-      .replace(/\s+/g, '_')
-      .replace(/-/g, '_')
+    return splitWords(this.str)
+      .replace(/[\s-]+/g, '_')
       .toLowerCase();
   }
 }
 
 /**
- * Convert a string to `snake_case`.
+ * Converts a given string to `snake_case`.
+ *
+ * @param str - The string to be converted.
+ * @returns The `snake_case` formatted string.
  */
 const toSnakeCase = (str: string): string => new Converter(str).convert();
 

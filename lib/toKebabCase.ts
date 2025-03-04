@@ -1,3 +1,5 @@
+import splitWords from './splitWords';
+
 class Converter {
   private str: string;
 
@@ -10,16 +12,17 @@ class Converter {
   }
 
   private getResult(): string {
-    return this.str
-      .replace(/([a-z])([A-Z])/g, '$1-$2')
-      .replace(/\s+/g, '-')
-      .replace(/_/g, '-')
+    return splitWords(this.str)
+      .replace(/[\s_]+/g, '-')
       .toLowerCase();
   }
 }
 
 /**
- * Convert a string to `kebab-case`.
+ * Converts a given string to `kebab-case`.
+ *
+ * @param str - The string to be converted.
+ * @returns The `kebab-case` formatted string.
  */
 const toKebabCase = (str: string): string => new Converter(str).convert();
 

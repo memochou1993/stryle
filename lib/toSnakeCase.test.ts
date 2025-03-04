@@ -5,12 +5,14 @@ import toSnakeCase from './toSnakeCase';
 describe('toSnakeCase', () => {
   test('should convert correctly', () => {
     const cases = [
+      ['camelCase', 'camel_case'],
+      ['Kebab-Case', 'kebab_case'],
+      ['PascalCase', 'pascal_case'],
       ['Snake_Case', 'snake_case'],
       ['Title Case', 'title_case'],
-      ['camelCase', 'camel_case'],
-      ['PascalCase', 'pascal_case'],
-      ['Kebab-Case', 'kebab_case'],
       ['HTML Element', 'html_element'],
+      ['XMLHttpRequest', 'xml_http_request'],
+      ['json2markdown', 'json_2_markdown'],
     ];
 
     cases.forEach(([input, expected]) => {

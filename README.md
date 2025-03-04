@@ -35,14 +35,17 @@ const output = window.Stryle.toTitleCase('hello, stryle!', {
 </script>
 ```
 
-## Available Methods
+## Available Functions
 
 | Name | Description |
 | --- | --- |
-| `capitalize` | Capitalizes the first letter of a string. |
-| `toKebabCase` | Converts a string to `kebab-case` (e.g., hello-world). |
-| `toSnakeCase` | Converts a string to `snake_case` (e.g., hello_world). |
-| `toTitleCase` | Converts a string to `Title Case`, with options for special terms. |
+| `lowerFirst` | Converts the first character of the given string to lowercase. |
+| `splitWords` | Splits a given string into words by inserting spaces at word boundaries. |
+| `toKebabCase` | Converts a given string to `kebab-case`. |
+| `toPascalCase` | Converts a given string to `PascalCase`. |
+| `toSnakeCase` | Converts a given string to `snake_case`. |
+| `toTitleCase` | Converts a given string to `Title Case`, with options for special terms. |
+| `upperFirst` | Converts the first character of the given string to uppercase. |
 
 ## Development
 
