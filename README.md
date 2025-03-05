@@ -41,6 +41,7 @@ const output = window.Stryle.toTitleCase('hello, stryle!', {
 | --- | --- |
 | `lowerFirst` | Converts the first character of the given string to lowercase. |
 | `splitWords` | Splits a given string into words by inserting spaces at word boundaries. |
+| `toCamelCase` | Converts a given string to `camelCase`. |
 | `toKebabCase` | Converts a given string to `kebab-case`. |
 | `toPascalCase` | Converts a given string to `PascalCase`. |
 | `toSnakeCase` | Converts a given string to `snake_case`. |
