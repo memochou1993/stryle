@@ -1,3 +1,4 @@
+import lowerFirst from './lowerFirst';
 import splitWords from './splitWords';
 import toCamelCase from './toCamelCase';
 import toKebabCase from './toKebabCase';
@@ -7,6 +8,7 @@ import toTitleCase from './toTitleCase';
 import upperFirst from './upperFirst';
 
 export {
+  lowerFirst,
   splitWords,
   toCamelCase,
   toKebabCase,
