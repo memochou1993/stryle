@@ -36,7 +36,7 @@ describe('toTitleCase', () => {
   });
 
   test('should convert considering fixed terms', () => {
-    const specialTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$'];
+    const specialTerms = ['', 'iPhone', 'iOS', 'Snake_Case', 'LLM', 'ID$', 'URL', 'IP'];
 
     const cases = [
       ['This is an iPhone', 'This is an iPhone'],
@@ -53,6 +53,9 @@ describe('toTitleCase', () => {
       ['Working with LLMS', 'Working with LLMS'],
       ['User Id', 'User ID'],
       ['User Identifier', 'User Identifier'],
+      ['URLs', 'URLs'],
+      ['IPs', 'IPs'],
+      ['updatedTs', 'Updated Ts'],
     ];
 
     cases.forEach(([input, expected]) => {

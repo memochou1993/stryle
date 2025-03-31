@@ -13,6 +13,9 @@ describe('toKebabCase', () => {
       ['HTML Element', 'html-element'],
       ['XMLHttpRequest', 'xml-http-request'],
       ['json2markdown', 'json-2-markdown'],
+      ['URLs', 'urls'],
+      ['IPs', 'ips'],
+      ['updatedTs', 'updated-ts'],
     ];
 
     cases.forEach(([input, expected]) => {

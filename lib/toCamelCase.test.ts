@@ -13,6 +13,9 @@ describe('toCamelCase', () => {
       ['HTML Element', 'htmlElement'],
       ['XMLHttpRequest', 'xmlHttpRequest'],
       ['json2markdown', 'json2Markdown'],
+      ['URLs', 'urls'],
+      ['IPs', 'ips'],
+      ['updatedTs', 'updatedTs'],
     ];
 
     cases.forEach(([input, expected]) => {

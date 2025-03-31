@@ -5,6 +5,9 @@
  * @returns The transformed string with words separated by spaces.
  */
 const splitWords = (str: string): string => {
+  if (/\b(?=[A-Z]{2,}s\b)\w+s\b/g.test(str)) {
+    return str;
+  }
   return str
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
     .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')

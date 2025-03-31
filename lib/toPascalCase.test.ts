@@ -13,6 +13,9 @@ describe('toPascalCase', () => {
       ['HTML Element', 'HtmlElement'],
       ['XMLHttpRequest', 'XmlHttpRequest'],
       ['json2markdown', 'Json2Markdown'],
+      ['URLs', 'Urls'],
+      ['IPs', 'Ips'],
+      ['updatedTs', 'UpdatedTs'],
     ];
 
     cases.forEach(([input, expected]) => {

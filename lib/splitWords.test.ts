@@ -13,6 +13,9 @@ describe('splitWords', () => {
       ['HTML Element', 'HTML Element'],
       ['XMLHttpRequest', 'XML Http Request'],
       ['json2markdown', 'json 2 markdown'],
+      ['URLs', 'URLs'],
+      ['IPs', 'IPs'],
+      ['updatedTs', 'updated Ts'],
     ];
 
     cases.forEach(([input, expected]) => {

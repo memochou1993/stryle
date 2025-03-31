@@ -13,6 +13,9 @@ describe('toSnakeCase', () => {
       ['HTML Element', 'html_element'],
       ['XMLHttpRequest', 'xml_http_request'],
       ['json2markdown', 'json_2_markdown'],
+      ['URLs', 'urls'],
+      ['IPs', 'ips'],
+      ['updatedTs', 'updated_ts'],
     ];
 
     cases.forEach(([input, expected]) => {
